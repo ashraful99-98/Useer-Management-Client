@@ -22,7 +22,7 @@ const Register = () => {
             //     name, email, password
             // }, { withCredentials: true });
 
-            const response = await axios.post(`https://user-management-server-d3x5.onrender.com/api/auth/register`, {
+            const response = await axios.post("https://user-management-server-d3x5.onrender.com/api/auth/register", {
                 name, email, password
             }, { withCredentials: true });
 

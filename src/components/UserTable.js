@@ -12,7 +12,7 @@ const UserTable = ({ isAuthenticated }) => {
     useEffect(() => {
         if (isAuthenticated) {
             // axios.get("http://localhost:8000/api/users", { withCredentials: true })
-            axios.get(`https://user-management-server-d3x5.onrender.com/api/users`, { withCredentials: true })
+            axios.get("https://user-management-server-d3x5.onrender.com/api/users", { withCredentials: true })
                 .then((res) => setUsers(res.data.sort((a, b) => new Date(b.lastLogin) - new Date(a.lastLogin))))
                 .catch(() => showMessage("error", "Error fetching users"));
         } else {
@@ -62,7 +62,7 @@ const UserTable = ({ isAuthenticated }) => {
 
         try {
             // let url = `http://localhost:8000/api/users`;
-            let url = `https://user-management-server-d3x5.onrender.com/api/users`;
+            let url = "https://user-management-server-d3x5.onrender.com/api/users";
             let method = "PUT";
 
             if (action === "delete") {
