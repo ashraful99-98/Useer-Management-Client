@@ -23,27 +23,6 @@ const AuthProvider = ({ children }) => {
         fetchUser();
     }, []);
 
-    // useEffect(() => {
-    //     const fetchUser = async () => {
-    //         try {
-    //             const API_BASE_URL = "https://user-management-server-liard.vercel.app";
-    //             const token = localStorage.getItem("token"); // Retrieve token if stored
-
-    //             const res = await axios.get(`${API_BASE_URL}/api/users/me`, {
-    //                 headers: { Authorization: `Bearer ${token}` },
-    //                 withCredentials: true
-    //             });
-
-    //             setUser(res.data.user);
-    //             setIsAuthenticated(true);
-    //         } catch (error) {
-    //             setUser(null);
-    //             setIsAuthenticated(false);
-    //         }
-    //     };
-    //     fetchUser();
-    // }, []);
-
 
     const login = async (email, password) => {
         try {
@@ -56,27 +35,6 @@ const AuthProvider = ({ children }) => {
             return { success: false, message: error.response?.data?.message || "Login failed" };
         }
     };
-
-    // const login = async (email, password) => {
-    //     try {
-    //         const API_BASE_URL = "https://user-management-server-liard.vercel.app";
-    //         const res = await axios.post(`${API_BASE_URL}/api/auth/login`,
-    //             { email, password },
-    //             { withCredentials: true } // Required for cookies!
-    //         );
-
-    //         if (res.data.token) {
-    //             localStorage.setItem("token", res.data.token); // Store token
-    //         }
-
-    //         setUser(res.data.user);
-    //         setIsAuthenticated(true);
-    //         return { success: true, message: res.data.message };
-    //     } catch (error) {
-    //         return { success: false, message: error.response?.data?.message || "Login failed" };
-    //     }
-    // };
-
 
 
     const logout = async () => {
@@ -91,23 +49,6 @@ const AuthProvider = ({ children }) => {
             setLoading(false);
         }
     };
-    // const logout = async () => {
-    //     setLoading(true);
-    //     try {
-    //         const API_BASE_URL = "https://user-management-server-liard.vercel.app";
-    //         await axios.post(`${API_BASE_URL}/api/auth/logout`, {}, { withCredentials: true });
-
-    //         localStorage.removeItem("token"); // Remove token on logout
-    //         setUser(null);
-    //         setIsAuthenticated(false);
-    //     } catch (error) {
-    //         console.error("Logout failed:", error);
-    //     } finally {
-    //         setLoading(false);
-    //     }
-    // };
-
-
 
     return (
         <AuthContext.Provider value={{ user, login, logout, loading, isAuthenticated }}>
